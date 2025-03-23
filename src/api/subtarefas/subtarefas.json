@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "titulo": "Criar identidade visual",
+    "tarefa_pai": 1,
+    "usuario": 4,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 2,
+    "titulo": "Categorizar por Tags",
+    "tarefa_pai": 2,
+    "usuario": 2,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 3,
+    "titulo": "Atribuir responsáveis",
+    "tarefa_pai": 2,
+    "usuario": 1,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 4,
+    "titulo": "Elaborar reunião entre membros",
+    "tarefa_pai": 2,
+    "usuario": 1,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 5,
+    "titulo": "Incluir fontes e referências",
+    "tarefa_pai": 3,
+    "usuario": 3,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 6,
+    "titulo": "Documentar projeto completo",
+    "tarefa_pai": 3,
+    "usuario": 3,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  }
+]

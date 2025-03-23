@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "titulo": "Criar um aplicativo",
+    "usuario": 4,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 2,
+    "titulo": "Estruturar Tarefas da Sprint",
+    "usuario": 2,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  },
+  {
+    "id": 3,
+    "titulo": "Organizar documentação",
+    "usuario": 3,
+    "criado_em": "2025-03-21",
+    "editado_em": "2025-03-21",
+    "entrega_em": "2025-03-21"
+  }
+]
