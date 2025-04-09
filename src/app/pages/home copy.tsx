@@ -51,7 +51,7 @@ export default function HomePage() {
   });
 
   const [subtarefaTempos, setSubtarefaTempos] = useState<{
-    [key: number]: number; // Agora armazenamos o tempo total acumulado
+    [key: number]: number[];
   }>({});
 
   const [cronometros, setCronometros] = useState<{
@@ -70,6 +70,14 @@ export default function HomePage() {
       clearInterval(cronometros[subtarefaId]);
       setCronometros({ ...cronometros, [subtarefaId]: null });
       setCronometroAtivo(null);
+
+      // Salvar o tempo decorrido
+      setSubtarefaTempos((prevTempos) => {
+        const tempoDecorrido =
+          Math.floor(Date.now() / 1000) - cronometroInicios[subtarefaId];
+        const tempos = prevTempos[subtarefaId] || [];
+        return { ...prevTempos, [subtarefaId]: [...tempos, tempoDecorrido] };
+      });
     } else {
       // Iniciar o cronômetro
       const inicio = Math.floor(Date.now() / 1000);
@@ -78,10 +86,18 @@ export default function HomePage() {
 
       const intervalo = setInterval(() => {
         const tempoAtual = Math.floor(Date.now() / 1000) - inicio;
-        setSubtarefaTempos((prevTempos) => ({
-          ...prevTempos,
-          [subtarefaId]: tempoAtual, // Atualiza apenas com o tempo da sessão atual
-        }));
+        setSubtarefaTempos((prevTempos) => {
+          const tempos = prevTempos[subtarefaId]
+            ? [...prevTempos[subtarefaId]]
+            : [];
+          if (tempos.length > 0) {
+            tempos[tempos.length - 1] = tempoAtual;
+          } else {
+            tempos.push(tempoAtual);
+          }
+
+          return { ...prevTempos, [subtarefaId]: tempos };
+        });
       }, 1000);
 
       setCronometros({ ...cronometros, [subtarefaId]: intervalo });
@@ -300,12 +316,7 @@ export default function HomePage() {
                             {userSelector(sub.usuario, sub.id)}
                           </Box>
                         </Grid2>
-                        <Grid2
-                          gap={1}
-                          width="max-content"
-                          size={1}
-                          sx={{ display: 'flex', alignItems: 'center' }}
-                        >
+                        <Grid2 width="max-content" size={1}>
                           <IconButton
                             sx={sx.timer}
                             onClick={() => handleCronometro(sub.id)}
@@ -321,8 +332,13 @@ export default function HomePage() {
                               <PlayArrow fontSize="small" />
                             )}
                           </IconButton>
-                          {subtarefaTempos[sub.id] !== undefined &&
-                            formatarTempo(subtarefaTempos[sub.id])}
+                          {subtarefaTempos[sub.id] && (
+                            <div>
+                              {subtarefaTempos[sub.id].map((tempo, index) => (
+                                <div key={index}>{formatarTempo(tempo)}</div>
+                              ))}
+                            </div>
+                          )}
                         </Grid2>
                       </Grid2>
                     </ListItem>
